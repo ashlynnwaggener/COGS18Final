@@ -1,7 +1,7 @@
 #finds which drink option had the most responses-figures out final result
 def find_drink (answer_list):
     '''originally used find_max function from A3 assignment as a refrence, 
-    but rewroked it so that it would work for this chatbot'''
+    but reworked it so that it would work for this chatbot'''
     highest_tally = 0
     for item in answer_list:
         if len(item) > highest_tally:
