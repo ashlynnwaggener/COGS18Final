@@ -1,14 +1,17 @@
 #finds which drink option had the most responses-figures out final result
 def find_drink (answer_list):
-    most_points = 0
+    '''originally used find_max function from A3 assignment as a refrence, 
+    but rewroked it so that it would work for this chatbot'''
+    highest_tally = 0
     for item in answer_list:
-        if len(item) > most_points:
-            most_points = len(item)
-    return most_points
+        if len(item) > highest_tally:
+            highest_tally = len(item)
+    return highest_tally
 
 #check if user wants to end the quiz
 def check_end_quiz (input_string):
-    end_quiz=['quit', 'Quit', 'bye', 'Bye', 'quit ', 'Quit ', 'bye ', 'Bye ']
+    end_quiz=['quit', 'Quit', 'bye', 'Bye', 'quit ', 'Quit ', 'bye ', 
+              'Bye ', 'exit', 'Exit', 'exit ', 'Exit ']
     if input_string in end_quiz:
         return True
     else:
@@ -74,25 +77,25 @@ questions, and all I need is for you to respond with \'A\', \'B\', \'C\', \
 or \'D\'. You can stop the game at any time by typing \'quit\'. Or start \
 from the beggining by typing \'restart\'. Type \'ready\' to continue.'
     intro = "Hello! Do you want to take a quiz to see what kind of holiday \
-drink you are? Type \'yes\' to continue."
+drink matches your personality? Type \'yes\' to continue."
     invalid_answer = 'Invalid response. Please respond with \'A\', \'B\', \
 \'C\', or \'D\'. Try again or type \'restart\' to restart the quiz'
     
     #Questions and their options
     question_1 ='Question 1: What is your favorite part of the holidays? \
-\t \n A) Spending time with loved ones!\t \n B) No more school! \t \n C) Presents! \
-\t \n D) Wearing ugly sweaters!'
+\t \n A) Spending time with loved ones!\t \n B) No more school! \t \n C) \
+Presents! \t \n D) Wearing ugly sweaters!'
     question_2 = 'Question 2: When do you start listening to holiday music?\
-\t \n A) November 1st (Thanksgiving who?) \t \n B) December 1st \t \n C) A week \
-before Christmas \t \n D) Never'
+\t \n A) November 1st (Thanksgiving who?) \t \n B) December 1st \t \n C) \
+A week before Christmas \t \n D) Never'
     question_3 ='Question 3: What is perfect holiday weather? \t \n A) \
 Snowy \t \n B) Rainy \t \n C) Cold but dry \t \n D) Sunny'
     question_4 = 'Question 4: What is your favorite winter activity? \t \
-\n A) Driving around to look at the Christmas lights \t \n B) Ice skating \t \n C) \
-Skiing or snowboarding \t \n D) Baking holiday treats'
+\n A) Driving around to look at the Christmas lights \t \n B) Ice skating \t\
+\n C) Skiing or snowboarding \t \n D) Baking holiday treats'
     question_5 = 'Question 5: What is your favorite holiday dessert? \t\
-\n A) Gingerbread cookies \t \n B) Peppermint bark \t \n C) Assorted chocolates\
-\t \n D) Fruit cake'
+\n A) Gingerbread cookies \t \n B) Peppermint bark \t \n C) Assorted \
+chocolates\t \n D) Fruit cake'
     
     #final result options-which drink they got
     hot_coco= 'You got Hot Chocolate! Your sweet personality is always \
@@ -106,7 +109,8 @@ for an adventure, and your mature personality always gets along well with \
 everyone. Type \'again\' to play again! Or \'quit\' to end the quiz.'
     eggnog= 'You got Eggnog! You\'re an acquired taste. Although you might \
 not love the holidays as much as others, you\'re bold, full of flavor, and \
-great to have around! Type \'again\' to play again! Or \'quit\' to end the quiz.'
+great to have around! Type \'again\' to play again! Or \'quit\' to end the \
+quiz.'
     
     counter = 0
   
@@ -117,7 +121,7 @@ great to have around! Type \'again\' to play again! Or \'quit\' to end the quiz.
         # Get a message from the user
         msg = input('Answer: ')
 
-        # Check for an end msg 
+        # Check for an end message 
         if check_end_quiz(msg):
             print ('Bye! See you later!')
             quiz = False
@@ -143,7 +147,7 @@ with \'yes\' if you changed your mind and want to take the quiz!')
                 print('Oops that\'s an invalid response. Type \'yes\' if \
 you want to take the quiz.')
     
-        #check that theyre ready and ask Q1
+        #check that they're ready and ask Q1
         elif counter == 1:
             if msg == 'ready':
                 print(question_1)
@@ -262,7 +266,7 @@ out what Holiday Drink you are!?')
             else:
                 print (invalid_answer)
            
-    #calculate result and return it
+    #calculate result and return it to the user, option to play again
         elif counter == 7:
             if check_yes(msg):
                 all_answer_scores = [answer_a, answer_b, answer_c, answer_d]
